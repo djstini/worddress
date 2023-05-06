@@ -7,7 +7,7 @@
   "icons": {
     "48": "icons/worddress-48.png"
   },
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage"],
   "browser_action": {
     "default_icon": "icons/worddress-48.png",
     "default_title": "Word.Dress",
@@ -18,5 +18,11 @@
       "matches": ["*://*/*wp-admin/*"],
       "js": ["content_scripts/themeify.js"]
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "word.dress@dennis-stinauer.de",
+      "strict_min_version": "42.0"
+    }
+  }
 }

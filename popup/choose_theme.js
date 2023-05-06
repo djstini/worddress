@@ -5,30 +5,20 @@
 function listenForClicks() {
   document.addEventListener("click", (e) => {
     /**
-     * Given the name of a Theme, get the URL to the corresponding stylesheet.
-     */
-    function themeNameToURL(themeName) {
-      switch (themeName) {
-        case "Dracula":
-          return browser.runtime.getURL("themes/dracula.css");
-        case "Catppuccin-Mocha":
-          return browser.runtime.getURL("beasts/catppuccin-mocha.css");
-        default:
-          return false;
-      }
-    }
-
-    /**
      * Insert the page-hiding CSS into the active tab,
      * then get the beast URL and
      * send a "themeify" message to the content script in the active tab.
      */
     function themeify(tabs) {
-      const url = themeNameToURL(e.target.textContent);
-      browser.tabs.sendMessage(tabs[0].id, {
-        command: "themeify",
-        themeUrl: url,
-      });
+      browser.storage.sync
+        .set({
+          themeName: e.target.textContent,
+        })
+        .then(() => {
+          browser.tabs.sendMessage(tabs[0].id, {
+            command: "themeify",
+          });
+        });
     }
 
     /**
