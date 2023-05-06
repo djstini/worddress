@@ -1,18 +1,22 @@
 {
-	"manifest_version": 2,
-	"name": "Word.Dress",
-	"version": "1.0",
-	"description": "Injects Styles into wp-admin. Comes with different Themes predefined.",
-	"homepage_url": "https://github.com/djstini/worddress",
-	"icons": {
-		"48": "icons/worddress-48.png"
-	},
-	"permissions": [
-		"activeTab"
-	],
-	"browser_action": {
-		"default_icon": "icons/worddress-48.png",
-		"default_title": "Word.Dress",
-		"default_popup": "popup/choose_theme.html"
-	}
+  "manifest_version": 2,
+  "name": "Word.Dress",
+  "version": "1.0",
+  "description": "Injects Styles into wp-admin. Comes with different Themes predefined.",
+  "homepage_url": "https://github.com/djstini/worddress",
+  "icons": {
+    "48": "icons/worddress-48.png"
+  },
+  "permissions": ["activeTab"],
+  "browser_action": {
+    "default_icon": "icons/worddress-48.png",
+    "default_title": "Word.Dress",
+    "default_popup": "popup/choose_theme.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*wp-admin/*"],
+      "js": ["content_scripts/themeify.js"]
+    }
+  ]
 }
