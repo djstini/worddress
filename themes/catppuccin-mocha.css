@@ -623,6 +623,7 @@ th .comment-grey-bubble::before{
 
 #fusion_builder_container{
   width: 98% !important;
+  margin-bottom: 2% !important;
 }
 
 .fusion-builder-module-controls-container{
